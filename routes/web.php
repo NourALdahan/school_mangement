@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/sesone1/{id}', [App\Http\Controllers\Sesone1Controller::class, 'index'] );
+Route::get('/sesone2/{id}', [App\Http\Controllers\Sesone2Controller::class, 'index'] );
+
+Route::get('/book', [App\Http\Controllers\BookController::class, 'index'] );
+Route::get('/sub/{id}', [App\Http\Controllers\SubjectNameController::class, 'index'] );
+Route::get('/donwlode/{id}', [App\Http\Controllers\SubjectNameController::class, 'donlowd'] );
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->rool==0) {
+            $silder=slider::all();
+            return view('welcome',compact('slider'));
+
+        }
+
+
     }
 }
