@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\sesone2;
+use App\Models\studant;
 use Illuminate\Http\Request;
 
 class Sesone2Controller extends Controller
@@ -11,6 +12,9 @@ class Sesone2Controller extends Controller
 
         $sesone1 = sesone2::where('studant_id', $id)->get();
 
-        return view('sesone1',compact('sesone1'));
+        $studant=studant::where('id',$id)->first();
+        $phot=$studant->photo;
+        $avg=sesone2::Where('studant_id', $id)->pluck('value')->avg();
+        return view('sesone1',compact('sesone1'),compact('phot'),compact('avg'));
     }
 }
