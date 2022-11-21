@@ -15,14 +15,17 @@ class CreateStudantsTable extends Migration
     {
         Schema::create('studants', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->float('avg_mark');
-            $table->string('photo');
-            $table->string('behaviour');
-            $table->string('name_studant');
-            $table->date('age')->nullable();
-            $table->string('certificate');
             $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->float('avg_mark')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('behaviour')->nullable();
+            $table->string('name_studant')->nullable();
+            $table->string('age')->nullable();
+            $table->string('certificate')->nullable();
+            $table->string('Address')->nullable();
+            $table->Integer('accept')->nullable();
+            $table->Integer('class')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
